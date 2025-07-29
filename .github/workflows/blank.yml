@@ -23,5 +23,11 @@ jobs:
     steps:
       - name: check
         run: |
-          echo "got here"
+          echo "oioi result: ${{ needs.oioi.result }}"
+          if [ "${{ needs.oioi.result }}" != "success" ]; then
+            echo "oioi job failed"
+            exit 1
+          else
+            echo "All required jobs passed"
+          fi
 
